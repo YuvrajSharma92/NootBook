@@ -7,6 +7,8 @@ export default function Blog() {
     const [click, setClick] = useState(false)
     const [notes, setNotes] = useState([])
     const [id, setid] = useState("")
+    const [login, setLogin] = useState( )
+
     const [info, setInfo] = useState({
         title: "",
         description: ""
@@ -79,6 +81,7 @@ export default function Blog() {
     }
     useEffect(() => {
         if (!localStorage.getItem("User")) {
+            setLogin(false)
             return navigate("/login")
         }
         getNotes()
@@ -99,7 +102,7 @@ export default function Blog() {
 
                 </div>
 
-                <div className={`bg-pink-200 z-10 w-[40%] absolute top-[30%] ${!click && "hidden"} left-[30%] rounded-xl text-end`}>
+                <div className={`bg-pink-200 z-10 w-[60%] absolute top-[30%] ${!click && "hidden"} left-[20%] rounded-xl text-end`}>
                     <i onClick={() => {
                         setClick(!click)
                     }} className="pr-4 text-[23px] cursor-pointer  bi bi-x-lg"></i>

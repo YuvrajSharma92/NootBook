@@ -2,45 +2,57 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
-const [user, setUser] = useState(null)
-const navigate = useNavigate()
+  const [user, setUser] = useState(null)
+  const [login, setLogin] = useState(false)
+  const navigate = useNavigate()
 
-    let getUser = async()=>{
-        let User = await JSON.parse(localStorage.getItem("User"))
-      await  setUser(User)
-    }
+  let getUser = async () => {
+    let User = await JSON.parse(localStorage.getItem("User"))
+    await setUser(User)
+  }
 
-    const [credentials, setCredentials] = useState({
-        email:"",
-        password:""
+  const [credentials, setCredentials] = useState({
+    email: "",
+    password: ""
+  })
+
+  const loginHandler = async (e) => {
+    e.preventDefault()
+    let data = await fetch("http://127.0.0.1:8000/user/login", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials)
     })
- 
-    const loginHandler = async(e)=>{
-        e.preventDefault()
-        let data = await fetch("http://127.0.0.1:8000/user/login",{
-            method:"POST",
-            headers:{'Content-Type': 'application/json'}, 
-            body:JSON.stringify(credentials)
-        })
-        
-        if (data.ok) {
-            let res = await data.json()
-            console.log(res);
-          await  localStorage.setItem("User",JSON.stringify(res.user))
-           navigate("/")
-        }
+
+    if (data.ok) {
+      let res = await data.json()
+      console.log(res);
+      await localStorage.setItem("User", JSON.stringify(res.user))
+      navigate("/")
+      // setLogin(true)
+      
     }
 
-    const inputChangeHandler = (e)=>{
-       setCredentials({...credentials,[e.target.name]:e.target.value})
-       console.log(credentials);
+    const getUser = async () =>{
+      try {
+        await get('http://localhost:5000/login')
+        setLogin(true)
+      } catch (error) {
+        setLogin(false)
+      }
     }
+  }
 
-    useEffect(() => {
-    
-     getUser()
-    }, [])
-    
+  const inputChangeHandler = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
+    //  console.log(credentials);
+  }
+
+  useEffect(() => {
+
+    getUser()
+  }, [login])
+
   return (
     <>
       <div className='min-h-[100vh]'>
@@ -50,6 +62,7 @@ const navigate = useNavigate()
             <form
               action="" className='bg-gray-300 py-10 font-medium px-10 rounded-lg'
             >
+
               <label
                 htmlFor="" className='py-2 block text-[22px]'>
                 E-mail</label>
@@ -76,6 +89,8 @@ const navigate = useNavigate()
           </div>
         </div>
       </div>
+
+      {/* {user && <h1>{user.user.name}</h1>}  */}
     </>
   )
 }
