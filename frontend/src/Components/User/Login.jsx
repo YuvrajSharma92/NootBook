@@ -18,7 +18,7 @@ export default function Login() {
 
   const loginHandler = async (e) => {
     e.preventDefault()
-    let data = await fetch("http://127.0.0.1:8000/user/login", {
+    let data = await fetch("https://notebook-ngff.onrender.com/user/login", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(credentials)
@@ -30,12 +30,12 @@ export default function Login() {
       await localStorage.setItem("User", JSON.stringify(res.user))
       navigate("/")
 
-      
+
     }
 
     const getUser = async () =>{
       try {
-        await get('http://localhost:8000/login')
+        await get('https://notebook-ngff.onrender.com/login')
         setLogin(true)
       } catch (error) {
         setLogin(false)
@@ -54,6 +54,11 @@ export default function Login() {
   }, [login])
 
   return (
+
+
+
+
+
     <>
       <div className='min-h-[100vh]'>
         <h1 className='text-center text-[25px] font-medium pt-7 text-white'>Login</h1>

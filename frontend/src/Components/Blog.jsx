@@ -36,7 +36,7 @@ export default function Blog() {
 
     const postnotehandler = async () => {
         let user = await JSON.parse(localStorage.getItem("User"));
-        let data = await fetch("http://127.0.0.1:8000/post/note", {
+        let data = await fetch("https://notebook-ngff.onrender.com/post/note", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ export default function Blog() {
 
     const deleteHandler = async (id) => {
         if (confirm("are you sure?")) {
-            await fetch(`http://127.0.0.1:8000/delete/note/${id}`, {
+            await fetch(`https://notebook-ngff.onrender.com/delete/note/${id}`, {
                 method: "DELETE",
                 headers: { 'Content-Type': 'application/json' },
             })
@@ -60,7 +60,7 @@ export default function Blog() {
     }
 
     const updateHandler = async (id) => {
-        await fetch(`http://127.0.0.1:8000/update/note/${id}`, {
+        await fetch(`https://notebook-ngff.onrender.com/update/note/${id}`, {
             method: "PUT",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(info)
@@ -70,7 +70,7 @@ export default function Blog() {
     const getNotes = async () => {
         let user = await JSON.parse(localStorage.getItem("User"));
 
-        const data = await fetch("http://127.0.0.1:8000/get/notes", {
+        const data = await fetch("https://notebook-ngff.onrender.com/get/notes", {
             headers: {
                 "userId": user._id
             }

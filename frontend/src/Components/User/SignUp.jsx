@@ -10,7 +10,7 @@ export default function SignUp() {
 
     const SignUpHandler = async (e) => {
         e.preventDefault()
-        let data = await fetch("http://127.0.0.1:8000/user/SignUp", {
+        let data = await fetch("https://notebook-ngff.onrender.com/user/SignUp", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials)
