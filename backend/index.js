@@ -7,7 +7,7 @@ import {User} from './UserModel.js'
 
 const connectToDB = async () => {
     try {
-        let DB = await mongoose.connect("mongodb://127.0.0.1:27017/NoteBook")
+        let DB = await mongoose.connect("mongodb+srv://kalyansharma927:5fvTUewlbsjw9uMB@cluster0.ylqhyoo.mongodb.net/")
         console.log("Connected to DB at ", mongoose.connection.host);
     } catch (error) {
         console.log(error);
