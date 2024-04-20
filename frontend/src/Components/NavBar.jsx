@@ -4,15 +4,19 @@ import { Link, useLocation, useNavigate, } from 'react-router-dom'
 export default function NavBar() {
   const location = useLocation().pathname;
   const [login, setLogin] = useState(false)
+  
 
-const navigate = useNavigate()
-  const logoutHandler = (e)=>{
-    e.preventDefault()
-    if (confirm("logout?")) {
-      localStorage.removeItem("User")
-      navigate("/")
+
+  const navigate = useNavigate()
+    const logoutHandler = (e)=>{
+      e.preventDefault()
+      if (confirm("logout?")) {
+        localStorage.removeItem("User")
+        navigate("/")
+      }
     }
-  }
+ 
+    
 
   useEffect(() => {
     let login = localStorage.getItem("User")
@@ -23,6 +27,7 @@ const navigate = useNavigate()
       setLogin(false)
     }
   }, [])
+
 
   return (
     <>
@@ -35,17 +40,17 @@ const navigate = useNavigate()
             </Link>
 
             <Link to={"/Login"}
-              className={`${location == "/Login" ? "text-blue-600" : "text-black"} ${login?"hidden":"block"}`}
+              className={`${location == "/Login" ? "text-blue-600" : "text-black"} ${login ? "hidden" : "block"}`}
             >Login
             </Link>
             <Link to={"/SignUp"}
-              className={`${location == "/SignUp" ? "text-blue-600" : "text-black"} ${login?"hidden":"block"}`}
+              className={`${location == "/SignUp" ? "text-blue-600" : "text-black"} ${login ? "hidden" : "block"}`}
             >Sign Up
             </Link>
-            <Link 
-            onClick={logoutHandler}
-              className={`${location == "/logout" ? "text-blue-600" : "text-black"} ${login?"block":"hidden"}`}
-            >logout
+            <Link
+              onClick={logoutHandler}
+              className={`${location == "/logout" ? "text-blue-600" : "text-black"} ${login ? "block" : "hidden"}`}
+            >Logout
             </Link>
           </ul>
         </div>

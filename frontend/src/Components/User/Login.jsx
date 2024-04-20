@@ -29,13 +29,13 @@ export default function Login() {
       console.log(res);
       await localStorage.setItem("User", JSON.stringify(res.user))
       navigate("/")
-      // setLogin(true)
+
       
     }
 
     const getUser = async () =>{
       try {
-        await get('http://localhost:5000/login')
+        await get('http://localhost:8000/login')
         setLogin(true)
       } catch (error) {
         setLogin(false)
