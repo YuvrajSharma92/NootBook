@@ -17,7 +17,7 @@ connectToDB()
 const app = express();
 
 app.use(cors({
-    origin: "*", 
+    'Access-Control-Allow-Origin': "*", 
     methods: "GET,POST,PUT,DELETE",
     credentials: true
   }))
@@ -103,7 +103,7 @@ app.post("/user/signup", async (req, res) => {
             error: "all fields are required"
         })
     }
-    const isExist = await User.findOne({email:email })
+    const isExist = await User.find({email:email })
     if (isExist) {
         return res.json({
             err:"email already exists"
