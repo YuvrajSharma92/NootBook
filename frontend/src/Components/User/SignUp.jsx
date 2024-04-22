@@ -10,7 +10,7 @@ export default function SignUp() {
 
     const SignUpHandler = async (e) => {
         e.preventDefault()
-        let data = await fetch("https://notebook-ngff.onrender.com/user/SignUp", {
+        let data = await fetch("https://notebook-ngff.onrender.com/user/signup", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials)
@@ -21,7 +21,7 @@ export default function SignUp() {
 
     const inputChangeHandler = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
-        console.log(credentials);
+        // console.log(credentials);
     }
     return (
         <>

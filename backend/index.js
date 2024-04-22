@@ -7,7 +7,7 @@ import {User} from './UserModel.js'
 
 const connectToDB = async () => {
     try {
-        let DB = await mongoose.connect("mongodb+srv://kalyansharma927:5fvTUewlbsjw9uMB@cluster0.ylqhyoo.mongodb.net/")
+        let DB = await mongoose.connect("mongodb+srv://kalyansharma927:5fvTUewlbsjw9uMB@cluster0.ylqhyoo.mongodb.net/notebook")
         console.log("Connected to DB at ", mongoose.connection.host);
     } catch (error) {
         console.log(error);
@@ -18,8 +18,8 @@ const app = express();
 
 app.use(cors({
     'Access-Control-Allow-Origin': "*", 
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true
+    'methods': "GET,POST,PUT,DELETE",
+    'credentials': true
   }))
 app.use(express.json())
 
@@ -105,6 +105,7 @@ app.post("/user/signup", async (req, res) => {
     }
     const isExist = await User.find({email:email })
     if (isExist) {
+        console.log(isExist);
         return res.json({
             err:"email already exists"
         })
