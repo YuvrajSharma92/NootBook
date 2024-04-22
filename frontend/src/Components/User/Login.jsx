@@ -29,8 +29,8 @@ export default function Login() {
       console.log(res);
       await localStorage.setItem("User", JSON.stringify(res.user))
       navigate("/")
-
-
+ 
+       
     }
 
     const getUser = async () =>{

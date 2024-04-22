@@ -129,20 +129,20 @@ app.post("/user/login", async (req, res) => {
     const {email, password } = req.body;
 
     if (!email || !password) {
-        return res.json({
+        return res.status(403).json({
             error: "all fields are required"
         })
     }
     const user = await User.findOne({email:email })
 
     if (!user) {
-        return res.json({
+        return res.status(403).json({
             massage:"invalid credentials"
         })
     }
 
     if (user.password != password) {
-        return res.json({
+        return res.status(403).json({
             massage:"invalid credentials"
         })
     }
