@@ -24,7 +24,7 @@ export default function Login() {
       body: JSON.stringify(credentials)
     })
 
-    if (data.ok) {
+    if (res.user) {
       let res = await data.json()
       console.log(res);
       await localStorage.setItem("User", JSON.stringify(res.user))
