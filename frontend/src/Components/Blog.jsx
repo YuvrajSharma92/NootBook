@@ -95,14 +95,14 @@ export default function Blog() {
                         onClick={() => {
                             setClick(!click)
                             setid(null)
-                        }} className='bg-gray-300 w-[30%] rounded-xl flex flex-col items-center justify-center text-center'>
+                        }} className='bg-gray-300 w-[80%] sm:w-[30%] rounded-xl flex flex-col items-center justify-center text-center'>
                         <i className="cursor-pointer text-[60px] bi bi-plus"></i>
                         <h1 className='pb-4 font-medium text-[30px]'>Add</h1>
                     </div>
 
                 </div>
 
-                <div className={`bg-pink-200 z-10 w-[60%] absolute top-[30%] ${!click && "hidden"} left-[20%] rounded-xl text-end`}>
+                <div className={`bg-pink-300  z-10 w-[80%] sm:w-[50%] absolute top-[30%] ${!click && "hidden"} left-[10%] sm:left-[25%] rounded-xl text-end`}>
                     <i onClick={() => {
                         setClick(!click)
                     }} className="pr-4 text-[23px] cursor-pointer  bi bi-x-lg"></i>
