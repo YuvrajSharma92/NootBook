@@ -5,9 +5,15 @@ import mongoose from "mongoose"
 import { Note } from "./noteModel.js"
 import {User} from './UserModel.js'
 
+import dotenv from "dotenv"
+
+dotenv.config({path:"./config/config.env"})
+
+
+
 const connectToDB = async () => {
     try {
-        let DB = await mongoose.connect("mongodb+srv://kalyansharma927:5fvTUewlbsjw9uMB@cluster0.ylqhyoo.mongodb.net/notebook")
+        let DB = await mongoose.connect(process.env.MONGOURI)
         console.log("Connected to DB at ", mongoose.connection.host);
     } catch (error) {
         console.log(error);

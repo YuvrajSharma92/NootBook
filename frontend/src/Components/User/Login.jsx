@@ -18,7 +18,7 @@ export default function Login() {
 
   const loginHandler = async (e) => {
     e.preventDefault()
-    let data = await fetch("https://notebook-ngff.onrender.com/user/login", {
+    let data = await fetch(`${import.meta.env.VITE_API_KEY}/user/login`, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(credentials)
@@ -38,7 +38,7 @@ export default function Login() {
 
     const getUser = async () =>{
       try {
-        await get('https://notebook-ngff.onrender.com/login')
+        await get(`${import.meta.env.VITE_API}/login`)
         setLogin(true)
       } catch (error) {
         setLogin(false)
@@ -48,7 +48,7 @@ export default function Login() {
 
   const inputChangeHandler = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value })
-    //  console.log(credentials);
+    //console.log(credentials);
   }
 
   useEffect(() => {

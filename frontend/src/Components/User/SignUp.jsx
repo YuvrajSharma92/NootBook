@@ -12,7 +12,7 @@ export default function SignUp() {
 
     const SignUpHandler = async (e) => {
         e.preventDefault()
-        let data = await fetch("https://notebook-ngff.onrender.com/user/signup", {
+        let data = await fetch(`${import.meta.env.VITE_API_KEY}/user/signup`, {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials)
