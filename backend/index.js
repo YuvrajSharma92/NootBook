@@ -104,7 +104,7 @@ app.post("/user/signup", async (req, res) => {
         })
     }
     const isExist = await User.find({email:email })
-    if (isExist) {
+    if (isExist.length != 0) {
         console.log(isExist);
         return res.json({
             err:"email already exists"
