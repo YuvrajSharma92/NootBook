@@ -23,9 +23,12 @@ export default function Login() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(credentials)
     })
+    let res = await data.json()
+    if (!res.ok) {
+      alert("invalid credentials!")
+    }
 
     if (res.user) {
-      let res = await data.json()
       console.log(res);
       await localStorage.setItem("User", JSON.stringify(res.user))
       navigate("/")

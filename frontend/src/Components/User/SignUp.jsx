@@ -21,6 +21,9 @@ export default function SignUp() {
 
        if (data.ok) {
         let res = await data.json()
+        if (!res.ok) {
+            alert("invailed credentials")
+        }
         console.log(res);
         await localStorage.setItem("User", JSON.stringify(res.user))
         navigate("/")
