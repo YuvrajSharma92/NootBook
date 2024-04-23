@@ -24,7 +24,7 @@ export default function Login() {
       body: JSON.stringify(credentials)
     })
     let res = await data.json()
-    if (!res.ok) {
+    if (!data.ok) {
       alert("invalid credentials!")
     }
 

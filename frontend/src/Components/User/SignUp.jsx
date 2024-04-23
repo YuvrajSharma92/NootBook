@@ -21,7 +21,7 @@ export default function SignUp() {
 
        if (data.ok) {
         let res = await data.json()
-        if (!res.ok) {
+        if (!data.ok) {
             alert("invailed credentials")
         }
         console.log(res);
