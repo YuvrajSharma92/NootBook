@@ -18,16 +18,16 @@ export default function SignUp() {
             body: JSON.stringify(credentials)
         })
 
-
-       if (data.ok) {
         let res = await data.json()
         if (!data.ok) {
-            alert("invailed credentials")
+          return  alert("invailed credentials")
         }
-        console.log(res);
-        await localStorage.setItem("User", JSON.stringify(res.user))
+
+      
+           console.log(res);
+           await localStorage.setItem("User", JSON.stringify(res.user))
         navigate("/")
-       }
+       
 
     }
 
