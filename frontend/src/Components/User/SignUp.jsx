@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export default function SignUp() {
-    const navigate = useNavigate ()
+    const navigate = useNavigate()
 
     const [credentials, setCredentials] = useState({
         name: "",
@@ -20,14 +20,14 @@ export default function SignUp() {
 
         let res = await data.json()
         if (!data.ok) {
-          return  alert("invailed credentials")
+            return alert("invailed credentials")
         }
 
-      
-           console.log(res);
-           await localStorage.setItem("User", JSON.stringify(res.user))
+
+        console.log(res);
+        await localStorage.setItem("User", JSON.stringify(res.user))
         navigate("/")
-       
+
 
     }
 

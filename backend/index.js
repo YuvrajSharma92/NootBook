@@ -105,7 +105,7 @@ app.post("/user/signup", async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-        return res.json({
+        return res.status(401).json({
             error: "all fields are required"
         })
     }
